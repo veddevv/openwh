@@ -26,5 +26,5 @@ if __name__ == "__main__":
         print("Bruk: python weather_stack.py <by>")
     else:
         city = sys.argv[1]
-        api_key = "8b8e9269ca7e130669b4db88b85c6475"  # Bytt ut med din API-nøkkel
+        api_key = "din_weatherstack_api_nøkkel"  # Bytt ut med din API-nøkkel
         get_weather(city, api_key)
