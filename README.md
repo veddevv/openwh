@@ -1,4 +1,4 @@
-# simpleweather
+# Openwh
 
 
 ## Værapp med Weatherstack API
@@ -34,7 +34,7 @@ Dette prosjektet er en enkel værapp som bruker Weatherstack API for å hente v�
    Klon dette prosjektet til din lokale maskin ved å bruke:
 
    ```
-   git clone https://github.com/veddevv/simpleweather.git
+   git clone https://github.com/veddevv/openwh.git
    ```
 
 2. Installer Avhengigheter
