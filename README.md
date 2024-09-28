@@ -80,4 +80,4 @@ Hvis du ønsker å bidra til dette prosjektet, er du velkommen til å sende pull
 
 ### Lisens
 
-Dette prosjektet er lisensiert under GNU General Public License v3.0 (GPL-3.0). Se (LICENSE)[https://github.com/veddevv/openwh/blob/main/LICENSE].
+Dette prosjektet er lisensiert under GNU General Public License v3.0 (GPL-3.0). Se LICENSE.
