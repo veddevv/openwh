@@ -4,6 +4,7 @@
 ## Værapp med Weatherstack API
 
 Dette prosjektet er en enkel værapp som bruker Weatherstack API for å hente værdata og vise dem på en brukervennlig måte. Applikasjonen består av et PowerShell-skript og et Python-skript som sammen gir deg muligheten til å sjekke været i en valgt by.
+openwh er kun for Windows foreløpig.
 
 ### Funksjoner
 
