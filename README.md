@@ -51,7 +51,7 @@ openwh er kun for Windows foreløpig.
    Åpne `weather_stack.py` og erstatte `din_weatherstack_api_nøkkel` med din egen API-nøkkel fra Weatherstack.
 
    ```
-   api_key = "din_weatherstack_api_nøkkel"  # Bytt ut med din API-nøkkel
+   api_key = "din_weatherstack_api_nøkkel"
    ```
 
 4. Kjør Applikasjonen
@@ -77,7 +77,7 @@ Beskrivelse: Klarvær
 
 ### Bidra
 
-Hvis du ønsker å bidra til dette prosjektet, er du velkommen til å sende pull requests eller åpne issues med forslag til forbedringer.
+Hvis du ønsker å bidra til dette prosjektet, er du velkommen til å sende pull requests eller åpne issues med forslag til forbedringer. Vi setter pris på all tilbakemelding og forslag som kan hjelpe oss med å gjøre prosjektet enda bedre. Enten det er nye funksjoner, feilrettinger eller bare generelle kommentarer, er vi åpne for å høre fra deg.
 
 ### Lisens
 
