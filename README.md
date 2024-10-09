@@ -1,199 +1,76 @@
-# OpenWH
+# Openwh
 
-## Om Prosjektet
-OpenWH er en samling av skript (PowerShell og Python) som henter værdata fra Open-Meteo API. Skriptene gir deg rask tilgang til værinformasjon direkte fra kommandolinjen, med mulighet for å velge mellom to forskjellige implementasjoner basert på dine preferanser eller systembegrensninger.
 
-## Funksjonalitet
-- Henter værdata fra Open-Meteo API
-- Viser:
-  - Nåværende værforhold
-  - Temperatur
-  - Nedbørsinformasjon
-  - Vinddata
-- Tilgjengelig i både PowerShell og Python
+## Værapp med Open-Meteo API
 
-## Forskjeller mellom implementasjonene
+Dette prosjektet er en enkel værapp som bruker Weatherstack API for å hente værdata og vise dem på en brukervennlig måte. Applikasjonen består av et PowerShell-skript og et Python-skript som sammen gir deg muligheten til å sjekke været i en valgt by.
 
-### PowerShell-versjon
-- Optimalisert for Windows-miljøer
-- Bruker native PowerShell-kommandoer for HTTP-requests
-- Formaterer output med PowerShell-spesifikke formateringsverktøy
-- Bedre integrasjon med Windows-spesifikke funksjoner
+openwh er kun for Windows foreløpig. openwh får oppdateringer etterhvert, sånn at prosjektet ikke blir dødt.
 
-### Python-versjon
-- Plattformuavhengig (kjører på Windows, macOS, Linux)
-- Bruker requests-biblioteket for HTTP-forespørsler
-- Mer fleksibel databehandling
-- Lettere å utvide med additional Python-biblioteker
+### Funksjoner
 
-## Teknisk Informasjon
-- PowerShell script (.ps1)
-- Python script (.py)
-- Bruker Open-Meteo API for værdata
-- Ingen ekstra rammeverk eller biblioteker
+- Hent værdata for en valgt by.
+- Vis temperatur, fuktighet og en beskrivelse av været.
 
-## Forutsetninger
+### Hvordan Det Fungerer
 
-### For PowerShell
-- Windows med PowerShell 5.1 eller nyere
-- Internettilkobling
-- PowerShell må være konfigurert til å kunne kjøre skript:
-```powershell
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+1. PowerShell-skript (`weather_stack.ps1`):
+   - Spør brukeren om bynavn.
+   - Kaller Python-skriptet og sender bynavnet som parameter.
+
+2. Python-skript (`weather_stack.py`):
+   - Mottar bynavnet fra PowerShell-skriptet.
+   - Sender en forespørsel til Weatherstack API for å hente værdata.
+   - Viser værdata med temperatur, fuktighet og værbeskrivelse.
+
+### Forutsetninger
+
+- Python 3.x installert.
+- PowerShell (for å kjøre PowerShell-skriptet).
+
+### Komme I Gang
+
+1. Klone Repository
+
+   Klon dette prosjektet til din lokale maskin ved å bruke:
+
+   ```
+   git clone https://github.com/veddevv/openwh.git
+   ```
+
+2. Installer Avhengigheter
+
+   Sørg for at `requests`-biblioteket er installert for Python-skriptet:
+
+   ```
+   pip install requests
+   ```
+
+3. Kjør Applikasjonen
+
+   - Kjør PowerShell-skriptet for å starte værappen:
+
+     ```
+     ./weather_stack.ps1
+     ```
+
+   - Følg instruksjonene for å oppgi bynavn og få værdata.
+
+### Eksempler på Bruk
+
+Når du bruker appen, vil du få en utskrift som viser værdata for den valgte byen. Her er et eksempel på hva du kan forvente:
+
+```
+Været i Oslo:
+Temperatur: 15°C
+Fuktighet: 67%
+Beskrivelse: Klarvær
 ```
 
-### For Python
-- Python 3.x installert
-- Standard Python-biblioteker
-- Internettilkobling
+### Bidra
 
-## Installasjon
-1. Klon repositoriet:
-```bash
-git clone https://github.com/veddevv/openwh.git
-```
+Hvis du ønsker å bidra til dette prosjektet, er du velkommen til å sende pull requests eller åpne issues med forslag til forbedringer. Vi setter pris på all tilbakemelding og forslag som kan hjelpe oss med å gjøre prosjektet enda bedre. Enten det er nye funksjoner, feilrettinger eller bare generelle kommentarer, er vi åpne for å høre fra deg.
 
-2. Naviger til skriptmappen:
-```bash
-cd openwh
-```
+### Lisens
 
-## Bruk
-
-### PowerShell
-```powershell
-# Grunnleggende bruk
-.\weather_stack.ps1
-
-# Med spesifikke koordinater
-.\weather_stack.ps1 -Latitude 59.9139 -Longitude 10.7522
-
-# Med alle valgfrie parametre
-.\weather_stack.ps1 -Latitude 59.9139 -Longitude 10.7522 -Detailed
-```
-
-### Python
-```bash
-# Grunnleggende bruk
-python weather_stack.py
-
-# Med spesifikke koordinater
-python weather_stack.py --lat 59.9139 --lon 10.7522
-
-# Med alle valgfrie parametre
-python weather_stack.py --lat 59.9139 --lon 10.7522 --detailed
-```
-
-## Eksempel på Output
-
-### PowerShell Output
-```
-Værdata for Oslo, Norge:
-Temperatur: 18°C
-Vindstyrke: 5 m/s
-Nedbør: 0 mm
-Luftfuktighet: 65%
-
-Detaljert informasjon (hvis --detailed er brukt):
-UV-indeks: 5.2
-Skydekke: 25%
-Lufttrykk: 1013 hPa
-```
-
-### Python Output
-```
-Weather data for Oslo, Norway:
-Temperature: 18°C
-Wind Speed: 5 m/s
-Precipitation: 0 mm
-Humidity: 65%
-
-Detailed information (if --detailed is used):
-UV Index: 5.2
-Cloud Cover: 25%
-Air Pressure: 1013 hPa
-```
-
-## Kommandolinjeargumenter
-
-### PowerShell Parametre
-- `-Latitude`: Breddegrad (valgfri, standard: Oslo)
-- `-Longitude`: Lengdegrad (valgfri, standard: Oslo)
-- `-Detailed`: Vis detaljert værinformasjon (switch parameter)
-
-### Python Argumenter
-- `--lat`: Breddegrad (valgfri, standard: Oslo)
-- `--lon`: Lengdegrad (valgfri, standard: Oslo)
-- `--detailed`: Vis detaljert værinformasjon (flag)
-
-## Feilsøking
-
-### Vanlige PowerShell-problemer
-
-1. **Execution Policy Error**
-```powershell
-# Feilmelding:
-"Execution of scripts is disabled on this system"
-
-# Løsning:
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-2. **Nettverksproblemer**
-```powershell
-# Sjekk internettforbindelse
-Test-NetConnection open-meteo.com -Port 443
-```
-
-### Vanlige Python-problemer
-
-1. **ModuleNotFoundError**
-```bash
-# Feilmelding:
-ModuleNotFoundError: No module named 'requests'
-
-# Løsning:
-pip install requests
-```
-
-2. **Permission Error** (Linux/macOS)
-```bash
-# Feilmelding:
-Permission denied
-
-# Løsning:
-chmod +x weather_stack.py
-```
-
-### Generell Feilsøking
-1. Sjekk at du har internettilkobling
-2. Verifiser at koordinatene er gyldige
-3. Sjekk at API-endepunktet er tilgjengelig
-4. Se etter feilmeldinger i konsollen
-
-## Kjente Begrensninger
-- API-rategrenser fra Open-Meteo
-- Nøyaktighet avhenger av tilgjengelige værstasjoner
-- Enkelte værdata kan mangle for noen lokasjoner
-
-## Lisens
-Dette prosjektet er lisensiert under GNU General Public License v3.0 (GPL-3.0).
-
-### Hva dette betyr:
-- ✔️ Du kan kommersielt bruke dette prosjektet
-- ✔️ Du kan modifisere og distribuere prosjektet
-- ✔️ Du kan bruke prosjektet for private formål
-- ✔️ Du kan patentere modifikasjoner du gjør
-- ❗ Du må publisere kildekoden når du distribuerer prosjektet
-- ❗ Du må inkludere den originale lisensen
-- ❗ Du må dokumentere endringer du gjør
-- ❗ Du må lisensiere modifikasjoner under GPL-3.0
-
-For full lisensinformasjon, se [LICENSE](LICENSE) filen i prosjektet eller besøk [GNU GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).
-
-## Anerkjennelser
-- [Open-Meteo](https://open-meteo.com/) for værdatatjenesten
-- Bidragsytere til prosjektet
-
-## Kontakt
-For spørsmål eller problemer, vennligst åpne en issue på GitHub.
+Dette prosjektet er lisensiert under GNU General Public License v3.0 (GPL-3.0). Se [LICENSE](https://github.com/veddevv/openwh?tab=GPL-3.0-1-ov-file).
